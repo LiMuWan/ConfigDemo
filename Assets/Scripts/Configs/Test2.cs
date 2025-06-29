@@ -6,32 +6,31 @@ namespace Config
 {
 	public class TbTest2 
 	{
-		private readonly System.Collections.Generic.Dictionary<string, Test2> _dataMap;
+		private readonly System.Collections.Generic.Dictionary<int, Test2> _dataMap;
 		private readonly System.Collections.Generic.List<Test2> _dataList;
     
 		public TbTest2(string json)
 		{
-			_dataMap = JsonHelper.ParseStringDictionary<Test2>(json);
+			_dataMap = JsonHelper.ParseDictionary<Test2>(json);
 			_dataList = _dataMap.Values.ToList();
 		}
 
-		public System.Collections.Generic.Dictionary<string, Test2> DataMap => _dataMap;
+		public System.Collections.Generic.Dictionary<int, Test2> DataMap => _dataMap;
 		public System.Collections.Generic.List<Test2> DataList => _dataList;
 
-		public Test2 GetOrDefault(string key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-		public Test2 Get(string key) => _dataMap[key];
-		public Test2 this[string key] => _dataMap[key];
+		public Test2 GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
+		public Test2 Get(int key) => _dataMap[key];
+		public Test2 this[int key] => _dataMap[key];
 	}
 
 	public class Test2 : BaseEntity 
 	{
-		public string CharacterConfig { get; set; }
+		public int Id { get; set; }
 		public string Name { get; set; }
-		public string Speed { get; set; }
-		public string MaxSpeed { get; set; }
-		public string Damag { get; set; }
-		public string Crit { get; set; }
-		public string Items { get; set; }
+		public int Speed { get; set; }
+		public int MaxSpeed { get; set; }
+		public int Damage { get; set; }
+		public float Crit { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.
@@ -43,13 +42,12 @@ namespace Config
 			var sb = new System.Text.StringBuilder();
 
 			sb.AppendLine($"--- Test2 Object ---");
-			sb.AppendLine($"CharacterConfig: {CharacterConfig}");
+			sb.AppendLine($"Id: {Id}");
 			sb.AppendLine($"Name: {Name}");
 			sb.AppendLine($"Speed: {Speed}");
 			sb.AppendLine($"MaxSpeed: {MaxSpeed}");
-			sb.AppendLine($"Damag: {Damag}");
+			sb.AppendLine($"Damage: {Damage}");
 			sb.AppendLine($"Crit: {Crit}");
-			sb.AppendLine($"Items: {Items}");
 			sb.AppendLine($"--------------------");
 
 			return sb.ToString();

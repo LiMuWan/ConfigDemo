@@ -6,10 +6,31 @@
         "max_speed": 15232,
         "damage": 10,
         "crit": 0.5,
-        "items": "[1,1,2,{\"foo\":1, \"bar\":2},\"test\"]",
-        "items_1": "1,2",
-        "items_2": "3,4",
-        "items_3": "[1:2]",
-        "items_4": "[\"hello\":2]"
+        "items_1": [
+            1,
+            5,
+            99,
+            102
+        ],
+        "items_2": [
+            3,
+            4
+        ],
+        "items_3": [
+            1.1,
+            2.2,
+            3
+        ],
+        "items_4": [
+            "itemA",
+            "itemB",
+            "finalItem"
+        ],
+        "items_5": [
+            true,
+            false,
+            true,
+            false
+        ]
     }
 ]
