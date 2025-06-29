@@ -9,7 +9,7 @@ public class Test : MonoBehaviour
         ConfigSystem.Initialize();
         Debug.Log("ConfigSystem loaded successfully.");
         var config = ConfigSystem.Tables.TbTest3.Get(1);
-        Debug.Log("");
+        Debug.Log($"test 3 = {config}");
     }
 
     // Update is called once per frame

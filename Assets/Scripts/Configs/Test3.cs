@@ -47,8 +47,8 @@ namespace Config
 			var sb = new System.Text.StringBuilder();
 
 			sb.AppendLine($"--- Test3 Object ---");
-			sb.AppendLine($"Id: {Id ?? "null"}");
-			sb.AppendLine($"Name: {Name ?? "null"}");
+			sb.AppendLine($"Id: {Id}");
+			sb.AppendLine($"Name: {Name}");
 			sb.AppendLine($"Speed: {Speed ?? "null"}");
 			sb.AppendLine($"MaxSpeed: {MaxSpeed ?? "null"}");
 			sb.AppendLine($"Damage: {Damage ?? "null"}");
