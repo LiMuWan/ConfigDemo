@@ -1,20 +1,10 @@
 [
     {
-        "CharacterConfig": "int",
-        "Name": "str",
-        "Speed": "int",
-        "MaxSpeed": "int",
-        "Damag": "int",
-        "Crit": "float",
-        "Items": "json"
-    },
-    {
-        "CharacterConfig": "1",
-        "Name": "Shooter",
-        "Speed": "100",
-        "MaxSpeed": "15232",
-        "Damag": "100",
-        "Crit": "0.5",
-        "Items": "[1,1,2,{\"foo\":1, \"bar\":2},\"test\"]"
+        "id": 1,
+        "name": "Shooter",
+        "speed": 100,
+        "max_speed": 15232,
+        "damage": 100,
+        "crit": 0.5
     }
 ]

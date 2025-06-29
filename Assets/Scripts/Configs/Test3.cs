@@ -1,7 +1,6 @@
 // Code generated from test: Test3, DO NOT EDIT.
 using System.Linq;
 using Engine.JsonHelper;
-using Newtonsoft.Json.Linq;
 
 namespace Config 
 {
@@ -32,11 +31,11 @@ namespace Config
 		public long MaxSpeed { get; set; }
 		public double Damage { get; set; }
 		public float Crit { get; set; }
-		public JArray  Items { get; set; }
-		public JArray  Items1 { get; set; }
-		public JArray  Items2 { get; set; }
-		public JArray  Items3 { get; set; }
-		public JArray  Items4 { get; set; }
+		public string Items1 { get; set; }
+		public string Items2 { get; set; }
+		public string Items3 { get; set; }
+		public string Items4 { get; set; }
+		public string Items5 { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.
@@ -54,11 +53,11 @@ namespace Config
 			sb.AppendLine($"MaxSpeed: {MaxSpeed}");
 			sb.AppendLine($"Damage: {Damage}");
 			sb.AppendLine($"Crit: {Crit}");
-			sb.AppendLine($"Items: {Items}");
 			sb.AppendLine($"Items1: {Items1}");
 			sb.AppendLine($"Items2: {Items2}");
 			sb.AppendLine($"Items3: {Items3}");
 			sb.AppendLine($"Items4: {Items4}");
+			sb.AppendLine($"Items5: {Items5}");
 			sb.AppendLine($"--------------------");
 
 			return sb.ToString();
