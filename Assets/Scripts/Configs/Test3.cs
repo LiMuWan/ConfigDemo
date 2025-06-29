@@ -31,11 +31,11 @@ namespace Config
 		public long MaxSpeed { get; set; }
 		public double Damage { get; set; }
 		public float Crit { get; set; }
-		public string Items1 { get; set; }
-		public string Items2 { get; set; }
-		public string Items3 { get; set; }
-		public string Items4 { get; set; }
-		public string Items5 { get; set; }
+		public int[] Items1 { get; set; }
+		public long[] Items2 { get; set; }
+		public float[] Items3 { get; set; }
+		public string[] Items4 { get; set; }
+		public bool[] Items5 { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.
@@ -48,16 +48,16 @@ namespace Config
 
 			sb.AppendLine($"--- Test3 Object ---");
 			sb.AppendLine($"Id: {Id}");
-			sb.AppendLine($"Name: {Name}");
+			sb.AppendLine($"Name: {Name ?? "null"}");
 			sb.AppendLine($"Speed: {Speed}");
 			sb.AppendLine($"MaxSpeed: {MaxSpeed}");
 			sb.AppendLine($"Damage: {Damage}");
 			sb.AppendLine($"Crit: {Crit}");
-			sb.AppendLine($"Items1: {Items1}");
-			sb.AppendLine($"Items2: {Items2}");
-			sb.AppendLine($"Items3: {Items3}");
-			sb.AppendLine($"Items4: {Items4}");
-			sb.AppendLine($"Items5: {Items5}");
+			sb.AppendLine($"Items1: {(Items1 != null ? string.Join(\", ", Items1) : "null")}");
+			sb.AppendLine($"Items2: {(Items2 != null ? string.Join(\", ", Items2) : "null")}");
+			sb.AppendLine($"Items3: {(Items3 != null ? string.Join(\", ", Items3) : "null")}");
+			sb.AppendLine($"Items4: {(Items4 != null ? string.Join(\", ", Items4) : "null")}");
+			sb.AppendLine($"Items5: {(Items5 != null ? string.Join(\", ", Items5) : "null")}");
 			sb.AppendLine($"--------------------");
 
 			return sb.ToString();

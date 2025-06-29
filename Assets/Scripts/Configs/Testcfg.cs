@@ -43,7 +43,7 @@ namespace Config
 
 			sb.AppendLine($"--- Testcfg Object ---");
 			sb.AppendLine($"Id: {Id}");
-			sb.AppendLine($"Name: {Name}");
+			sb.AppendLine($"Name: {Name ?? "null"}");
 			sb.AppendLine($"Speed: {Speed}");
 			sb.AppendLine($"MaxSpeed: {MaxSpeed}");
 			sb.AppendLine($"Damage: {Damage}");
