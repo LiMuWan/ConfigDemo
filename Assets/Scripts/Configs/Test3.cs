@@ -53,11 +53,11 @@ namespace Config
 			sb.AppendLine($"MaxSpeed: {MaxSpeed}");
 			sb.AppendLine($"Damage: {Damage}");
 			sb.AppendLine($"Crit: {Crit}");
-			sb.AppendLine($"Items1: {(Items1 != null ? string.Join(\", ", Items1) : "null")}");
-			sb.AppendLine($"Items2: {(Items2 != null ? string.Join(\", ", Items2) : "null")}");
-			sb.AppendLine($"Items3: {(Items3 != null ? string.Join(\", ", Items3) : "null")}");
-			sb.AppendLine($"Items4: {(Items4 != null ? string.Join(\", ", Items4) : "null")}");
-			sb.AppendLine($"Items5: {(Items5 != null ? string.Join(\", ", Items5) : "null")}");
+			sb.AppendLine($"Items1: {(Items1 != null ? string.Join(", ", Items1) : "null")}");
+			sb.AppendLine($"Items2: {(Items2 != null ? string.Join(", ", Items2) : "null")}");
+			sb.AppendLine($"Items3: {(Items3 != null ? string.Join(", ", Items3) : "null")}");
+			sb.AppendLine($"Items4: {(Items4 != null ? string.Join(", ", Items4) : "null")}");
+			sb.AppendLine($"Items5: {(Items5 != null ? string.Join(", ", Items5) : "null")}");
 			sb.AppendLine($"--------------------");
 
 			return sb.ToString();
