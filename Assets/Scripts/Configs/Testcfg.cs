@@ -7,8 +7,8 @@ namespace Config
 {
 	public class TbTestcfg 
 	{
-		private readonly System.Collections.Generic.Dictionary<int, Testcfg> _dataMap;
-		private readonly System.Collections.Generic.List<Testcfg> _dataList;
+		private readonly Dictionary<int, Testcfg> _dataMap;
+		private readonly List<Testcfg> _dataList;
     
 		public TbTestcfg(string json)
 		{
@@ -16,8 +16,8 @@ namespace Config
 			_dataList = _dataMap.Values.ToList();
 		}
 
-		public System.Collections.Generic.Dictionary<int, Testcfg> DataMap => _dataMap;
-		public System.Collections.Generic.List<Testcfg> DataList => _dataList;
+		public Dictionary<int, Testcfg> DataMap => _dataMap;
+		public List<Testcfg> DataList => _dataList;
 
 		public Testcfg GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
 		public Testcfg Get(int key) => _dataMap[key];
