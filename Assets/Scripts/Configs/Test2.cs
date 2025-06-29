@@ -1,6 +1,7 @@
 // Code generated from test: Test2, DO NOT EDIT.
 using System.Linq;
 using Engine.JsonHelper;
+using Newtonsoft.Json.Linq;
 
 namespace Config 
 {
@@ -31,7 +32,7 @@ namespace Config
 		public string MaxSpeed { get; set; }
 		public string Damag { get; set; }
 		public string Crit { get; set; }
-		public string Items { get; set; }
+		public JArray  Items { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.
