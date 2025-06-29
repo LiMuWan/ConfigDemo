@@ -1,5 +1,6 @@
 // Code generated from test: Test3, DO NOT EDIT.
 using System.Linq;
+using Engine.JsonHelper;
 
 namespace Config 
 {
@@ -10,7 +11,7 @@ namespace Config
     
 		public TbTest3(string json)
 		{
-			_dataMap = Utility.Json.ParseDictionary<Test3>(json);
+			_dataMap = JsonHelper.ParseDictionary<Test3>(json);
 			_dataList = _dataMap.Values.ToList();
 		}
 
@@ -34,6 +35,6 @@ namespace Config
 		public string Items1 { get; set;}
 		public string Items2 { get; set;}
 		public string Items3 { get; set;}
-		public string Items3 { get; set;}
+		public string Items4 { get; set;}
 	}
 }
