@@ -43,13 +43,13 @@ namespace Config
 			var sb = new System.Text.StringBuilder();
 
 			sb.AppendLine($"--- Testcfg Object ---");
-			sb.AppendLine($"CharacterConfig: {CharacterConfig ?? "null"}");
-			sb.AppendLine($"Name: {Name ?? "null"}");
-			sb.AppendLine($"Speed: {Speed ?? "null"}");
-			sb.AppendLine($"MaxSpeed: {MaxSpeed ?? "null"}");
-			sb.AppendLine($"Damag: {Damag ?? "null"}");
-			sb.AppendLine($"Crit: {Crit ?? "null"}");
-			sb.AppendLine($"Items: {Items ?? "null"}");
+			sb.AppendLine($"CharacterConfig: {CharacterConfig}");
+			sb.AppendLine($"Name: {Name}");
+			sb.AppendLine($"Speed: {Speed}");
+			sb.AppendLine($"MaxSpeed: {MaxSpeed}");
+			sb.AppendLine($"Damag: {Damag}");
+			sb.AppendLine($"Crit: {Crit}");
+			sb.AppendLine($"Items: {Items}");
 			sb.AppendLine($"--------------------");
 
 			return sb.ToString();

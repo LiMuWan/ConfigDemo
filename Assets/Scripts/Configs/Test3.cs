@@ -47,17 +47,17 @@ namespace Config
 			var sb = new System.Text.StringBuilder();
 
 			sb.AppendLine($"--- Test3 Object ---");
-			sb.AppendLine($"Id: {Id ?? "null"}");
-			sb.AppendLine($"Name: {Name ?? "null"}");
-			sb.AppendLine($"Speed: {Speed ?? "null"}");
-			sb.AppendLine($"MaxSpeed: {MaxSpeed ?? "null"}");
-			sb.AppendLine($"Damage: {Damage ?? "null"}");
-			sb.AppendLine($"Crit: {Crit ?? "null"}");
-			sb.AppendLine($"Items: {Items ?? "null"}");
-			sb.AppendLine($"Items1: {Items1 ?? "null"}");
-			sb.AppendLine($"Items2: {Items2 ?? "null"}");
-			sb.AppendLine($"Items3: {Items3 ?? "null"}");
-			sb.AppendLine($"Items4: {Items4 ?? "null"}");
+			sb.AppendLine($"Id: {Id}");
+			sb.AppendLine($"Name: {Name}");
+			sb.AppendLine($"Speed: {Speed}");
+			sb.AppendLine($"MaxSpeed: {MaxSpeed}");
+			sb.AppendLine($"Damage: {Damage}");
+			sb.AppendLine($"Crit: {Crit}");
+			sb.AppendLine($"Items: {Items}");
+			sb.AppendLine($"Items1: {Items1}");
+			sb.AppendLine($"Items2: {Items2}");
+			sb.AppendLine($"Items3: {Items3}");
+			sb.AppendLine($"Items4: {Items4}");
 			sb.AppendLine($"--------------------");
 
 			return sb.ToString();
