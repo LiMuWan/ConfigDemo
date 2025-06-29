@@ -1,0 +1,20 @@
+[
+    {
+        "CharacterConfig": "int",
+        "Name": "str",
+        "Speed": "int",
+        "MaxSpeed": "int",
+        "Damag": "int",
+        "Crit": "float",
+        "Items": "json"
+    },
+    {
+        "CharacterConfig": "1",
+        "Name": "Shooter",
+        "Speed": "100",
+        "MaxSpeed": "15232",
+        "Damag": "10",
+        "Crit": "0.5",
+        "Items": "[1,1,2,{\"foo\":1, \"bar\":2},\"test\"]"
+    }
+]
