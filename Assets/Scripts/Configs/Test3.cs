@@ -26,17 +26,17 @@ namespace Config
 
 	public class Test3 : BaseEntity 
 	{
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public int Speed { get; set; }
-		public long MaxSpeed { get; set; }
-		public double Damage { get; set; }
-		public float Crit { get; set; }
-		public List<int> Items1 { get; set; }
-		public List<long> Items2 { get; set; }
-		public List<float> Items3 { get; set; }
-		public List<string> Items4 { get; set; }
-		public List<bool> Items5 { get; set; }
+		public int id { get; set; }
+		public string name { get; set; }
+		public int speed { get; set; }
+		public long max_speed { get; set; }
+		public double damage { get; set; }
+		public float crit { get; set; }
+		public List<int> items_1 { get; set; }
+		public List<long> items_2 { get; set; }
+		public List<float> items_3 { get; set; }
+		public List<string> items_4 { get; set; }
+		public List<bool> items_5 { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.
@@ -48,17 +48,17 @@ namespace Config
 			var sb = new System.Text.StringBuilder();
 
 			sb.AppendLine($"--- Test3 Object ---");
-			sb.AppendLine($"Id: {Id}");
-			sb.AppendLine($"Name: {Name ?? "null"}");
-			sb.AppendLine($"Speed: {Speed}");
-			sb.AppendLine($"MaxSpeed: {MaxSpeed}");
-			sb.AppendLine($"Damage: {Damage}");
-			sb.AppendLine($"Crit: {Crit}");
-			sb.AppendLine($"Items1: {(Items1 != null ? string.Join(", ", Items1) : "null")}");
-			sb.AppendLine($"Items2: {(Items2 != null ? string.Join(", ", Items2) : "null")}");
-			sb.AppendLine($"Items3: {(Items3 != null ? string.Join(", ", Items3) : "null")}");
-			sb.AppendLine($"Items4: {(Items4 != null ? string.Join(", ", Items4) : "null")}");
-			sb.AppendLine($"Items5: {(Items5 != null ? string.Join(", ", Items5) : "null")}");
+			sb.AppendLine($"id: {this.id}");
+			sb.AppendLine($"name: {name ?? "null"}");
+			sb.AppendLine($"speed: {this.speed}");
+			sb.AppendLine($"max_speed: {this.max_speed}");
+			sb.AppendLine($"damage: {this.damage}");
+			sb.AppendLine($"crit: {this.crit}");
+			sb.AppendLine($"items_1: {(items_1 != null ? string.Join(", ", items_1) : "null")}");
+			sb.AppendLine($"items_2: {(items_2 != null ? string.Join(", ", items_2) : "null")}");
+			sb.AppendLine($"items_3: {(items_3 != null ? string.Join(", ", items_3) : "null")}");
+			sb.AppendLine($"items_4: {(items_4 != null ? string.Join(", ", items_4) : "null")}");
+			sb.AppendLine($"items_5: {(items_5 != null ? string.Join(", ", items_5) : "null")}");
 			sb.AppendLine($"--------------------");
 
 			return sb.ToString();

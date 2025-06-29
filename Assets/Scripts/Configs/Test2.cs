@@ -26,12 +26,12 @@ namespace Config
 
 	public class Test2 : BaseEntity 
 	{
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public int Speed { get; set; }
-		public int MaxSpeed { get; set; }
-		public int Damage { get; set; }
-		public float Crit { get; set; }
+		public int id { get; set; }
+		public string name { get; set; }
+		public int speed { get; set; }
+		public int max_speed { get; set; }
+		public int damage { get; set; }
+		public float crit { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.
@@ -43,12 +43,12 @@ namespace Config
 			var sb = new System.Text.StringBuilder();
 
 			sb.AppendLine($"--- Test2 Object ---");
-			sb.AppendLine($"Id: {Id}");
-			sb.AppendLine($"Name: {Name ?? "null"}");
-			sb.AppendLine($"Speed: {Speed}");
-			sb.AppendLine($"MaxSpeed: {MaxSpeed}");
-			sb.AppendLine($"Damage: {Damage}");
-			sb.AppendLine($"Crit: {Crit}");
+			sb.AppendLine($"id: {this.id}");
+			sb.AppendLine($"name: {name ?? "null"}");
+			sb.AppendLine($"speed: {this.speed}");
+			sb.AppendLine($"max_speed: {this.max_speed}");
+			sb.AppendLine($"damage: {this.damage}");
+			sb.AppendLine($"crit: {this.crit}");
 			sb.AppendLine($"--------------------");
 
 			return sb.ToString();
