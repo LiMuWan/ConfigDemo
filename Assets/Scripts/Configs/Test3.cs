@@ -1,5 +1,6 @@
 // Code generated from test: Test3, DO NOT EDIT.
 using System.Linq;
+using System.Collections.Generic;
 using Engine.JsonHelper;
 
 namespace Config 
@@ -31,11 +32,11 @@ namespace Config
 		public long MaxSpeed { get; set; }
 		public double Damage { get; set; }
 		public float Crit { get; set; }
-		public int[] Items1 { get; set; }
-		public long[] Items2 { get; set; }
-		public float[] Items3 { get; set; }
-		public string[] Items4 { get; set; }
-		public bool[] Items5 { get; set; }
+		public List<int> Items1 { get; set; }
+		public List<long> Items2 { get; set; }
+		public List<float> Items3 { get; set; }
+		public List<string> Items4 { get; set; }
+		public List<bool> Items5 { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.

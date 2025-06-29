@@ -1,5 +1,6 @@
 // Code generated from test: Test2, DO NOT EDIT.
 using System.Linq;
+using System.Collections.Generic;
 using Engine.JsonHelper;
 
 namespace Config 
