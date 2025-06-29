@@ -25,16 +25,42 @@ namespace Config
 
 	public class Test3 : BaseEntity 
 	{
-		public int Id { get; set;}
-		public string Name { get; set;}
-		public int Speed { get; set;}
-		public long MaxSpeed { get; set;}
-		public double Damage { get; set;}
-		public float Crit { get; set;}
-		public string Items { get; set;}
-		public string Items1 { get; set;}
-		public string Items2 { get; set;}
-		public string Items3 { get; set;}
-		public string Items4 { get; set;}
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public int Speed { get; set; }
+		public long MaxSpeed { get; set; }
+		public double Damage { get; set; }
+		public float Crit { get; set; }
+		public string Items { get; set; }
+		public string Items1 { get; set; }
+		public string Items2 { get; set; }
+		public string Items3 { get; set; }
+		public string Items4 { get; set; }
+
+		/// <summary>
+		/// Returns a string representation of the object for debugging purposes.
+		/// </summary>
+		/// <returns>A string containing all property values.</returns>
+		public override string ToString()
+		{
+			// Use StringBuilder for efficient string construction.
+			var sb = new System.Text.StringBuilder();
+
+			sb.AppendLine($"--- Test3 Object ---");
+			sb.AppendLine($"Id: {Id ?? "null"}");
+			sb.AppendLine($"Name: {Name ?? "null"}");
+			sb.AppendLine($"Speed: {Speed ?? "null"}");
+			sb.AppendLine($"MaxSpeed: {MaxSpeed ?? "null"}");
+			sb.AppendLine($"Damage: {Damage ?? "null"}");
+			sb.AppendLine($"Crit: {Crit ?? "null"}");
+			sb.AppendLine($"Items: {Items ?? "null"}");
+			sb.AppendLine($"Items1: {Items1 ?? "null"}");
+			sb.AppendLine($"Items2: {Items2 ?? "null"}");
+			sb.AppendLine($"Items3: {Items3 ?? "null"}");
+			sb.AppendLine($"Items4: {Items4 ?? "null"}");
+			sb.AppendLine($"--------------------");
+
+			return sb.ToString();
+		}
 	}
 }

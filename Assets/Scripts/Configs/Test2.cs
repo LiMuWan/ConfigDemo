@@ -25,12 +25,34 @@ namespace Config
 
 	public class Test2 : BaseEntity 
 	{
-		public string CharacterConfig { get; set;}
-		public string Name { get; set;}
-		public string Speed { get; set;}
-		public string MaxSpeed { get; set;}
-		public string Damag { get; set;}
-		public string Crit { get; set;}
-		public string Items { get; set;}
+		public string CharacterConfig { get; set; }
+		public string Name { get; set; }
+		public string Speed { get; set; }
+		public string MaxSpeed { get; set; }
+		public string Damag { get; set; }
+		public string Crit { get; set; }
+		public string Items { get; set; }
+
+		/// <summary>
+		/// Returns a string representation of the object for debugging purposes.
+		/// </summary>
+		/// <returns>A string containing all property values.</returns>
+		public override string ToString()
+		{
+			// Use StringBuilder for efficient string construction.
+			var sb = new System.Text.StringBuilder();
+
+			sb.AppendLine($"--- Test2 Object ---");
+			sb.AppendLine($"CharacterConfig: {CharacterConfig ?? "null"}");
+			sb.AppendLine($"Name: {Name ?? "null"}");
+			sb.AppendLine($"Speed: {Speed ?? "null"}");
+			sb.AppendLine($"MaxSpeed: {MaxSpeed ?? "null"}");
+			sb.AppendLine($"Damag: {Damag ?? "null"}");
+			sb.AppendLine($"Crit: {Crit ?? "null"}");
+			sb.AppendLine($"Items: {Items ?? "null"}");
+			sb.AppendLine($"--------------------");
+
+			return sb.ToString();
+		}
 	}
 }
