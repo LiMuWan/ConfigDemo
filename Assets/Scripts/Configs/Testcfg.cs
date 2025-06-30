@@ -39,9 +39,7 @@ namespace Config
 		/// <returns>A string containing all property values.</returns>
 		public override string ToString()
 		{
-			// Use StringBuilder for efficient string construction.
 			var sb = new System.Text.StringBuilder();
-
 			sb.AppendLine($"--- Testcfg Object ---");
 			sb.AppendLine($"id: {this.id}");
 			sb.AppendLine($"name: {name ?? "null"}");
@@ -50,7 +48,6 @@ namespace Config
 			sb.AppendLine($"damage: {this.damage}");
 			sb.AppendLine($"crit: {this.crit}");
 			sb.AppendLine($"--------------------");
-
 			return sb.ToString();
 		}
 	}
