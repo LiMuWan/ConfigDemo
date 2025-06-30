@@ -1,7 +1,7 @@
 // Code generated from test: Test3, DO NOT EDIT.
 using System.Linq;
 using System.Collections.Generic;
-using Engine.JsonHelper;
+using Engine.CsvHelper;
 
 namespace Config 
 {
@@ -12,7 +12,7 @@ namespace Config
     
 		public TbTest3(string csvContent)
 		{
-			_dataMap = CsvHelper.ParseDictionary<int,Test3>(csvContent);
+			_dataMap = CsvHelper.ParseDictionary<int, Test3>(csvContent);
 			_dataList = _dataMap.Values.ToList();
 		}
 

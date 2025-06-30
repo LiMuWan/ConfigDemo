@@ -1,0 +1,2 @@
+id,name,speed,max_speed,damage,crit,items_1,items_2,items_3,items_4,items_5
+1,Shooter,100,15232,10,0.5,1;5;99;102,3;4,1.1;2.2;3,itemA;itemB;finalItem,true;false;true;false
