@@ -9,9 +9,9 @@ namespace Config
 
 		public Tables(System.Func<string, string> loader)
 		{
-			TbTestcfg = new TbTestcfg(loader("Testcfg"));
-			TbTest2 = new TbTest2(loader("Test2"));
-			TbTest3 = new TbTest3(loader("Test3"));
+			TbTestcfg = new TbTestcfg(loader("testcfg"));
+			TbTest2 = new TbTest2(loader("test2"));
+			TbTest3 = new TbTest3(loader("test3"));
 		}
 	}
 }
