@@ -1,7 +1,7 @@
 using System;
 using Config;
 using UnityEngine;
-namespace Engine
+namespace LRR.Utilities
 {
     /// <summary>
     /// Static utility for loading and managing configuration data
@@ -35,7 +35,7 @@ namespace Engine
                 return;
             try
             {
-                _tables = new Tables(LoadCSV);
+                _tables = new Tables(LoadJson);
                 _isInitialized = true;
                 Debug.Log("ConfigSystem initialized successfully.");
             }

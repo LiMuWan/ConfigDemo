@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Engine.JsonHelper
+namespace LRR.Utilities  
 {
     /// <summary>
     /// 默认 JSON 函数集静态辅助器。

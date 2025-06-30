@@ -1,4 +1,3 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +6,8 @@ using System.Reflection;
 using UnityEngine;
 using JArray = Newtonsoft.Json.Linq.JArray;
 using JObject = Newtonsoft.Json.Linq.JObject;
-namespace Engine
+
+namespace LRR.Utilities
 {
     /// <summary>
     /// Helper class for parsing CSV data into C# objects
