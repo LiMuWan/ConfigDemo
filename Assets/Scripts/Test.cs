@@ -7,8 +7,8 @@ public class Test : MonoBehaviour
     void Start()
     {
         ConfigSystem.Initialize();
-        var config = ConfigSystem.Tables.TbTest3.Get(1);
-        Debug.Log($"test 3 = {config}");
+        var config = ConfigSystem.Tables.TbCharacterSkillsConfig.Get(1);
+        Debug.Log($"TbCharacterSkillsConfig data  = {config}");
     }
 
     // Update is called once per frame
