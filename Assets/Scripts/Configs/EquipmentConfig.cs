@@ -10,9 +10,9 @@ namespace Config
 		private readonly Dictionary<int, EquipmentConfig> _dataMap;
 		private readonly List<EquipmentConfig> _dataList;
     
-		public TbEquipmentConfig(string json)
+		public TbEquipmentConfig(string csvContent)
 		{
-			_dataMap = JsonHelper.ParseDictionary<EquipmentConfig>(json);
+			_dataMap = CsvHelper.ParseDictionary<int, EquipmentConfig>(csvContent);
 			_dataList = _dataMap.Values.ToList();
 		}
 
