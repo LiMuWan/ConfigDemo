@@ -5,6 +5,6 @@ namespace Config
     [Serializable]
     public class BaseEntity
     {
-        public int Id;
+        public int id;
     }
 }

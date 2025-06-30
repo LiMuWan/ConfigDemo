@@ -101,3 +101,5 @@ InitTestScene*.unity*
 .idea/.idea.UnityClient/.idea/encodings.xml
 .idea/.idea.UnityClient/.idea/indexLayout.xml
 .idea/.idea.UnityClient/.idea/vcs.xml
+.idea/.idea.UnityClient/.idea/inspectionProfiles/Project_Default.xml
+ProjectSettings/Packages/com.unity.services.core/Settings.json

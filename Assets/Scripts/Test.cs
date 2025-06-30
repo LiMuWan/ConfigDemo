@@ -7,7 +7,6 @@ public class Test : MonoBehaviour
     void Start()
     {
         ConfigSystem.Initialize();
-        Debug.Log("ConfigSystem loaded successfully.");
         var config = ConfigSystem.Tables.TbTest3.Get(1);
         Debug.Log($"test 3 = {config}");
     }

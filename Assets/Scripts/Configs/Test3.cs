@@ -10,9 +10,9 @@ namespace Config
 		private readonly Dictionary<int, Test3> _dataMap;
 		private readonly List<Test3> _dataList;
     
-		public TbTest3(string json)
+		public TbTest3(string csvContent)
 		{
-			_dataMap = JsonHelper.ParseDictionary<Test3>(json);
+			_dataMap = CsvHelper.ParseDictionary<int,Test3>(csvContent);
 			_dataList = _dataMap.Values.ToList();
 		}
 
@@ -32,11 +32,11 @@ namespace Config
 		public long max_speed { get; set; }
 		public double damage { get; set; }
 		public float crit { get; set; }
-		public List<int> items_1 { get; set; }
-		public List<long> items_2 { get; set; }
-		public List<float> items_3 { get; set; }
-		public List<string> items_4 { get; set; }
-		public List<bool> items_5 { get; set; }
+		public int[] items_1 { get; set; }
+		public long[] items_2 { get; set; }
+		public float[] items_3 { get; set; }
+		public string[] items_4 { get; set; }
+		public bool[] items_5 { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.

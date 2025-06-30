@@ -54,7 +54,7 @@ namespace Engine
             try
             {
                 // 注意：LoadJson 需要在有可用 Unity 环境时调用
-                _tables = new Tables(LoadJson); 
+                _tables = new Tables(LoadCSV); 
                 _initialized = true; // 标记为已初始化
                 Debug.Log("ConfigSystem loaded successfully.");
             }
@@ -76,6 +76,33 @@ namespace Engine
         {
             // 定义 JSON 文件所在的基础路径
             const string basePath = "Configs/JsonConfigs/";
+            
+            // 组合完整的资源路径
+            string fullPath = basePath + fileName;
+
+            // 使用 UnityEngine.Resources.Load 加载 TextAsset
+            TextAsset textAsset = Resources.Load<TextAsset>(fullPath);
+            
+            if (textAsset == null)
+            {
+                // 提供清晰的错误信息，帮助开发者定位问题
+                // 建议：确保文件确实存在于 Assets/Resources/Configs/JsonConfigs/ 路径下
+                throw new System.IO.FileNotFoundException($"ConfigSystem: Failed to load TextAsset '{fileName}'. Please ensure the file exists at '{fullPath}' within your Assets/Resources folder."); 
+            }
+            
+            // 返回加载的文本内容
+            return textAsset.text;
+        }
+        
+        /// <summary>
+        /// 加载CSV文件。这是核心的资源加载部分。
+        /// </summary>
+        /// <param name="fileName">JSON文件的名称（不包含路径和扩展名，假设在Resources/Configs/JsonConfigs/目录下）。</param>
+        /// <returns>加载到的JSON字符串。</returns>
+        private static string LoadCSV(string fileName)
+        {
+            // 定义 JSON 文件所在的基础路径
+            const string basePath = "Configs/CSVConfigs/";
             
             // 组合完整的资源路径
             string fullPath = basePath + fileName;
