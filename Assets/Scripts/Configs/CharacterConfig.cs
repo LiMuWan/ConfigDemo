@@ -10,9 +10,9 @@ namespace Config
 		private readonly Dictionary<int, CharacterConfig> _dataMap;
 		private readonly List<CharacterConfig> _dataList;
     
-		public TbCharacterConfig(string json)
+		public TbCharacterConfig(string csvContent)
 		{
-			_dataMap = JsonHelper.ParseDictionary<CharacterConfig>(json);
+			_dataMap = CsvHelper.ParseDictionary<int, CharacterConfig>(csvContent);
 			_dataList = _dataMap.Values.ToList();
 		}
 
