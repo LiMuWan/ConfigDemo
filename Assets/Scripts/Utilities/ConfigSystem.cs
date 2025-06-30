@@ -35,7 +35,7 @@ namespace LRR.Utilities
                 return;
             try
             {
-                _tables = new Tables(LoadJson);
+                _tables = new Tables(LoadCSV);
                 _isInitialized = true;
                 Debug.Log("ConfigSystem initialized successfully.");
             }
