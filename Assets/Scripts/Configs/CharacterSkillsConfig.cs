@@ -10,9 +10,9 @@ namespace Config
 		private readonly Dictionary<int, CharacterSkillsConfig> _dataMap;
 		private readonly List<CharacterSkillsConfig> _dataList;
     
-		public TbCharacterSkillsConfig(string csvContent)
+		public TbCharacterSkillsConfig(string json)
 		{
-			_dataMap = CsvHelper.ParseDictionary<int, CharacterSkillsConfig>(csvContent);
+			_dataMap = JsonHelper.ParseDictionary<CharacterSkillsConfig>(json);
 			_dataList = _dataMap.Values.ToList();
 		}
 
@@ -28,13 +28,13 @@ namespace Config
 	{
 		public int id { get; set; }
 		public string name { get; set; }
-		public string[] skills { get; set; }
+		public List<string> skills { get; set; }
 		public int max_speed { get; set; }
 		public int damage { get; set; }
 		public float crit { get; set; }
-		public int[] skill_cooldowns { get; set; }
-		public int[] skill_costs { get; set; }
-		public string[] skill_types { get; set; }
+		public List<int> skill_cooldowns { get; set; }
+		public List<int> skill_costs { get; set; }
+		public List<string> skill_types { get; set; }
 		public bool is_available { get; set; }
 
 		/// <summary>

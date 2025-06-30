@@ -52,7 +52,7 @@
             "Fireball",
             "Ice Blast"
         ],
-        "max_speed": 13000,
+        "max_speed": 13001,
         "damage": 12,
         "crit": 0.6,
         "skill_cooldowns": [
