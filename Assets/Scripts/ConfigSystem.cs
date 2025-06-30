@@ -1,123 +1,81 @@
 using System;
-using Config; // 保留，以防万一
-using UnityEngine; // 保持对 Resources.Load 的引用
-
-namespace Engine 
+using Config;
+using UnityEngine;
+namespace Engine
 {
     /// <summary>
-    /// 配置加载静态工具。代码精简、健壮，并优化了字符串拼接。
+    /// Static utility for loading and managing configuration data
     /// </summary>
     public static class ConfigSystem
     {
-        // _init 标志用于避免重复初始化
-        private static bool _initialized = false; 
-
-        private static Tables _tables; // 静态成员
-
+        private static bool _isInitialized = false;
+        private static Tables _tables;
+        private const string JsonConfigPath = "Configs/JsonConfigs/";
+        private const string CsvConfigPath = "Configs/CSVConfigs/";
         /// <summary>
-        /// 获取配置表。如果未初始化，则自动加载。
+        /// Access to configuration tables with lazy initialization
         /// </summary>
         public static Tables Tables
         {
             get
             {
-                // 确保在访问 Tables 时，配置已经加载
-                EnsureInitialized();
+                if (!_isInitialized)
+                {
+                    Initialize();
+                }
                 return _tables;
             }
         }
-
         /// <summary>
-        /// 手动初始化配置加载器，并在首次访问时调用。
-        /// </summary>
-        private static void EnsureInitialized()
-        {
-            if (!_initialized)
-            {
-                LoadConfigurations();
-            }
-        }
-
-        /// <summary>
-        /// 公开的初始化方法，供外部代码（如 GameManager）调用。
+        /// Explicit initialization method
         /// </summary>
         public static void Initialize()
         {
-            EnsureInitialized(); // 调用内部的初始化逻辑
-        }
-
-        /// <summary>
-        /// 加载配置。这个方法负责执行实际的加载流程。
-        /// </summary>
-        private static void LoadConfigurations()
-        {
+            if (_isInitialized) 
+                return;
             try
             {
-                // 注意：LoadJson 需要在有可用 Unity 环境时调用
-                _tables = new Tables(LoadCSV); 
-                _initialized = true; // 标记为已初始化
-                Debug.Log("ConfigSystem loaded successfully.");
+                _tables = new Tables(LoadCSV);
+                _isInitialized = true;
+                Debug.Log("ConfigSystem initialized successfully.");
             }
             catch (Exception ex)
             {
-                // 捕获加载过程中可能发生的异常，并提供详细的错误信息
-                Debug.LogError($"ConfigSystem: Failed to load configurations. Error: {ex.Message}\nStack Trace: {ex.StackTrace}");
-                // 抛出异常，让调用者知道加载失败
-                throw; 
+                Debug.LogError($"ConfigSystem initialization failed: {ex.Message}");
+                throw new InvalidOperationException("ConfigSystem initialization failed", ex);
             }
         }
-
         /// <summary>
-        /// 加载JSON文件。这是核心的资源加载部分。
+        /// Loads JSON configuration file
         /// </summary>
-        /// <param name="fileName">JSON文件的名称（不包含路径和扩展名，假设在Resources/Configs/JsonConfigs/目录下）。</param>
-        /// <returns>加载到的JSON字符串。</returns>
         private static string LoadJson(string fileName)
         {
-            // 定义 JSON 文件所在的基础路径
-            const string basePath = "Configs/JsonConfigs/";
-            
-            // 组合完整的资源路径
-            string fullPath = basePath + fileName;
-
-            // 使用 UnityEngine.Resources.Load 加载 TextAsset
-            TextAsset textAsset = Resources.Load<TextAsset>(fullPath);
-            
-            if (textAsset == null)
-            {
-                // 提供清晰的错误信息，帮助开发者定位问题
-                // 建议：确保文件确实存在于 Assets/Resources/Configs/JsonConfigs/ 路径下
-                throw new System.IO.FileNotFoundException($"ConfigSystem: Failed to load TextAsset '{fileName}'. Please ensure the file exists at '{fullPath}' within your Assets/Resources folder."); 
-            }
-            
-            // 返回加载的文本内容
-            return textAsset.text;
+            return LoadConfigFile(JsonConfigPath, fileName);
         }
-        
         /// <summary>
-        /// 加载CSV文件。这是核心的资源加载部分。
+        /// Loads CSV configuration file
         /// </summary>
-        /// <param name="fileName">JSON文件的名称（不包含路径和扩展名，假设在Resources/Configs/JsonConfigs/目录下）。</param>
-        /// <returns>加载到的JSON字符串。</returns>
         private static string LoadCSV(string fileName)
         {
-            // 定义 JSON 文件所在的基础路径
-            const string basePath = "Configs/CSVConfigs/";
-            
-            // 组合完整的资源路径
-            string fullPath = basePath + fileName;
-
-            // 使用 UnityEngine.Resources.Load 加载 TextAsset
+            return LoadConfigFile(CsvConfigPath, fileName);
+        }
+        /// <summary>
+        /// Generic config file loader
+        /// </summary>
+        private static string LoadConfigFile(string basePath, string fileName)
+        {
+            if (string.IsNullOrWhiteSpace(fileName))
+            {
+                throw new ArgumentException("File name cannot be null or empty", nameof(fileName));
+            }
+            string fullPath = $"{basePath}{fileName}";
             TextAsset textAsset = Resources.Load<TextAsset>(fullPath);
-            
             if (textAsset == null)
             {
-                // 提供清晰的错误信息，帮助开发者定位问题
-                // 建议：确保文件确实存在于 Assets/Resources/Configs/JsonConfigs/ 路径下
-                throw new System.IO.FileNotFoundException($"ConfigSystem: Failed to load TextAsset '{fileName}'. Please ensure the file exists at '{fullPath}' within your Assets/Resources folder."); 
+                throw new System.IO.FileNotFoundException(
+                    $"Config file '{fileName}' not found at path '{fullPath}'. " +
+                    "Ensure it exists in the Resources folder with the correct extension.");
             }
-            
-            // 返回加载的文本内容
             return textAsset.text;
         }
     }
