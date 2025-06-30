@@ -14,7 +14,7 @@ namespace Engine
     /// </summary>
     public static class CsvHelper
     {
-        private const char ArrayElementSeparator = ',';
+        private const char ArrayElementSeparator = ';';
         private const string DefaultKeyColumn = "id";
         /// <summary>
         /// Parses CSV content into a list of objects
@@ -191,25 +191,39 @@ namespace Engine
         }
         private static Array ConvertArray(string cellValue, Type elementType)
         {
-            var elements = cellValue.Split(ArrayElementSeparator, StringSplitOptions.RemoveEmptyEntries);
-            var array = Array.CreateInstance(elementType, elements.Length);
-            for (int i = 0; i < elements.Length; i++)
+            if (string.IsNullOrWhiteSpace(cellValue) || cellValue == "null")
+                return Array.CreateInstance(elementType, 0);
+    
+            try
             {
-                var elementValue = ConvertCellValue(elements[i], elementType);
-                array.SetValue(elementValue ?? Activator.CreateInstance(elementType), i);
+                var elements = cellValue.Split(ArrayElementSeparator, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(e => e.Trim())
+                    .ToArray();
+        
+                var array = Array.CreateInstance(elementType, elements.Length);
+                for (int i = 0; i < elements.Length; i++)
+                {
+                    var elementValue = ConvertCellValue(elements[i], elementType);
+                    array.SetValue(elementValue ?? Activator.CreateInstance(elementType), i);
+                }
+                return array;
             }
-            return array;
+            catch (Exception ex)
+            {
+                Debug.LogError($"Failed to convert array: {cellValue}. Error: {ex.Message}");
+                return Array.CreateInstance(elementType, 0);
+            }
         }
         private static object ConvertList(string cellValue, Type elementType)
         {
+            var array = ConvertArray(cellValue, elementType);
             var listType = typeof(List<>).MakeGenericType(elementType);
             var list = Activator.CreateInstance(listType);
             var addMethod = listType.GetMethod("Add");
-            var elements = cellValue.Split(ArrayElementSeparator, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var element in elements)
+    
+            foreach (var item in array)
             {
-                var elementValue = ConvertCellValue(element, elementType);
-                addMethod.Invoke(list, new[] { elementValue ?? Activator.CreateInstance(elementType) });
+                addMethod.Invoke(list, new[] { item });
             }
             return list;
         }
