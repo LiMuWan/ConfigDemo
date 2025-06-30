@@ -3,15 +3,15 @@ namespace Config
 {
 	public class Tables
 	{
-		public TbTestcfg TbTestcfg { get; private set; }
-		public TbTest2 TbTest2 { get; private set; }
-		public TbTest3 TbTest3 { get; private set; }
+		public TbCharacterConfig TbCharacterConfig { get; private set; }
+		public TbEquipmentConfig TbEquipmentConfig { get; private set; }
+		public TbCharacterSkillsConfig TbCharacterSkillsConfig { get; private set; }
 
 		public Tables(System.Func<string, string> loader)
 		{
-			TbTestcfg = new TbTestcfg(loader("testcfg"));
-			TbTest2 = new TbTest2(loader("test2"));
-			TbTest3 = new TbTest3(loader("test3"));
+			TbCharacterConfig = new TbCharacterConfig(loader("CharacterConfig"));
+			TbEquipmentConfig = new TbEquipmentConfig(loader("EquipmentConfig"));
+			TbCharacterSkillsConfig = new TbCharacterSkillsConfig(loader("CharacterSkillsConfig"));
 		}
 	}
 }
