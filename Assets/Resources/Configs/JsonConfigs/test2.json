@@ -1,0 +1,10 @@
+{
+    "1": {
+        "id": 1,
+        "name": "Shooter",
+        "speed": 100,
+        "max_speed": 15232,
+        "damage": 10,
+        "crit": 0.5
+    }
+}

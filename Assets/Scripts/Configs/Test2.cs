@@ -1,7 +1,7 @@
 // Code generated from test: Test2, DO NOT EDIT.
 using System.Linq;
 using System.Collections.Generic;
-using Engine;
+using Engine.JsonHelper;
 
 namespace Config 
 {
@@ -10,9 +10,9 @@ namespace Config
 		private readonly Dictionary<int, Test2> _dataMap;
 		private readonly List<Test2> _dataList;
     
-		public TbTest2(string csvContent)
+		public TbTest2(string json)
 		{
-			_dataMap = CsvHelper.ParseDictionary<int, Test2>(csvContent);
+			_dataMap = JsonHelper.ParseDictionary<Test2>(json);
 			_dataList = _dataMap.Values.ToList();
 		}
 
