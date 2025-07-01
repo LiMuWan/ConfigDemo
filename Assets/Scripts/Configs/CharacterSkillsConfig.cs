@@ -2,53 +2,48 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using LRR.Utilities;
+using LRR.Utilities; // 假设这个命名空间包含 JsonHelper 和 JoinListOrNull
 
 namespace Config 
 {
 public class TbCharacterSkillsConfig 
 	{
-		private readonly Dictionary<int, CharacterSkillsConfig> _dataMap;
-		private readonly List<CharacterSkillsConfig> _dataList;
+		/// <summary>
+		/// The dictionary mapping keys to data entries.
+		/// </summary>
+		public Dictionary<int, CharacterSkillsConfig> DataMap { get; }
+
+		/// <summary>
+		/// A list containing all data entries.
+		/// </summary>
+		public List<CharacterSkillsConfig> DataList { get; }
     
 		public TbCharacterSkillsConfig(string json)
 		{
-			try
-			{
-			_dataMap = JsonHelper.ParseDictionary<CharacterSkillsConfig>(json);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception("Failed to parse data for TbCharacterSkillsConfig.", ex);
-			}
-            
-			if (_dataMap == null)
-			{
-				_dataMap = new Dictionary<int, CharacterSkillsConfig>();
-				// Optional: throw an exception if data is expected
-				// throw new Exception("Parsed data resulted in a null dictionary for TbCharacterSkillsConfig.");
-			}
-
-			_dataList = _dataMap.Values.ToList();
+			DataMap = JsonHelper.ParseDictionary<CharacterSkillsConfig>(json) ?? new Dictionary<int, CharacterSkillsConfig>();
+			DataList = DataMap.Values.ToList();
 		}
-
-		public Dictionary<int, CharacterSkillsConfig> DataMap => _dataMap;
-		public List<CharacterSkillsConfig> DataList => _dataList;
 
 		/// <summary>
 		/// Gets a data entry by key, returning null if not found.
 		/// </summary>
-		public CharacterSkillsConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
+		/// <param name="key">The key of the data entry.</param>
+		/// <returns>The data entry, or null if not found.</returns>
+		public CharacterSkillsConfig GetOrDefault(int key) => DataMap.TryGetValue(key, out var v) ? v : null;
 
 		/// <summary>
 		/// Gets a data entry by key. Throws KeyNotFoundException if the key does not exist.
 		/// </summary>
-		public CharacterSkillsConfig Get(int key) => _dataMap[key];
+		/// <param name="key">The key of the data entry.</param>
+		/// <returns>The data entry.</returns>
+		public CharacterSkillsConfig Get(int key) => DataMap[key];
 
 		/// <summary>
 		/// Provides indexer access to data entries by key.
 		/// </summary>
-		public CharacterSkillsConfig this[int key] => _dataMap[key];
+		/// <param name="key">The key of the data entry.</param>
+		/// <returns>The data entry.</returns>
+		public CharacterSkillsConfig this[int key] => DataMap[key];
 	}
 
 	public class CharacterSkillsConfig : BaseEntity 
@@ -72,13 +67,13 @@ public class TbCharacterSkillsConfig
 			var sb = new System.Text.StringBuilder();
 			sb.AppendLine($"--- CharacterSkillsConfig Object (id: {id}) ---");
 			sb.AppendLine($"name: {name ?? "null"}");
-			sb.AppendLine($"skills: " + (skills != null ? string.Join(\", \", skills) : "null"));
+			sb.AppendLine($"skills: {JoinListOrNull(skills)}");
 			sb.AppendLine($"max_speed: {this.max_speed}");
 			sb.AppendLine($"damage: {this.damage}");
 			sb.AppendLine($"crit: {this.crit.ToString("F2")}");
-			sb.AppendLine($"skill_cooldowns: " + (skill_cooldowns != null ? string.Join(\", \", skill_cooldowns) : "null"));
-			sb.AppendLine($"skill_costs: " + (skill_costs != null ? string.Join(\", \", skill_costs) : "null"));
-			sb.AppendLine($"skill_types: " + (skill_types != null ? string.Join(\", \", skill_types) : "null"));
+			sb.AppendLine($"skill_cooldowns: {JoinListOrNull(skill_cooldowns)}");
+			sb.AppendLine($"skill_costs: {JoinListOrNull(skill_costs)}");
+			sb.AppendLine($"skill_types: {JoinListOrNull(skill_types)}");
 			sb.AppendLine($"is_available: {this.is_available}");
 			sb.AppendLine($"--------------------");
 			return sb.ToString();

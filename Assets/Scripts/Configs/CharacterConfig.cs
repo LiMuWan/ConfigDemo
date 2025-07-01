@@ -2,53 +2,48 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using LRR.Utilities;
+using LRR.Utilities; // 假设这个命名空间包含 JsonHelper 和 JoinListOrNull
 
 namespace Config 
 {
 public class TbCharacterConfig 
 	{
-		private readonly Dictionary<int, CharacterConfig> _dataMap;
-		private readonly List<CharacterConfig> _dataList;
+		/// <summary>
+		/// The dictionary mapping keys to data entries.
+		/// </summary>
+		public Dictionary<int, CharacterConfig> DataMap { get; }
+
+		/// <summary>
+		/// A list containing all data entries.
+		/// </summary>
+		public List<CharacterConfig> DataList { get; }
     
 		public TbCharacterConfig(string json)
 		{
-			try
-			{
-			_dataMap = JsonHelper.ParseDictionary<CharacterConfig>(json);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception("Failed to parse data for TbCharacterConfig.", ex);
-			}
-            
-			if (_dataMap == null)
-			{
-				_dataMap = new Dictionary<int, CharacterConfig>();
-				// Optional: throw an exception if data is expected
-				// throw new Exception("Parsed data resulted in a null dictionary for TbCharacterConfig.");
-			}
-
-			_dataList = _dataMap.Values.ToList();
+			DataMap = JsonHelper.ParseDictionary<CharacterConfig>(json) ?? new Dictionary<int, CharacterConfig>();
+			DataList = DataMap.Values.ToList();
 		}
-
-		public Dictionary<int, CharacterConfig> DataMap => _dataMap;
-		public List<CharacterConfig> DataList => _dataList;
 
 		/// <summary>
 		/// Gets a data entry by key, returning null if not found.
 		/// </summary>
-		public CharacterConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
+		/// <param name="key">The key of the data entry.</param>
+		/// <returns>The data entry, or null if not found.</returns>
+		public CharacterConfig GetOrDefault(int key) => DataMap.TryGetValue(key, out var v) ? v : null;
 
 		/// <summary>
 		/// Gets a data entry by key. Throws KeyNotFoundException if the key does not exist.
 		/// </summary>
-		public CharacterConfig Get(int key) => _dataMap[key];
+		/// <param name="key">The key of the data entry.</param>
+		/// <returns>The data entry.</returns>
+		public CharacterConfig Get(int key) => DataMap[key];
 
 		/// <summary>
 		/// Provides indexer access to data entries by key.
 		/// </summary>
-		public CharacterConfig this[int key] => _dataMap[key];
+		/// <param name="key">The key of the data entry.</param>
+		/// <returns>The data entry.</returns>
+		public CharacterConfig this[int key] => DataMap[key];
 	}
 
 	public class CharacterConfig : BaseEntity 
