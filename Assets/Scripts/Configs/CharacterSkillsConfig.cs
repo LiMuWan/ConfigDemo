@@ -26,16 +26,15 @@ namespace Config
 
 	public class CharacterSkillsConfig : BaseEntity 
 	{
-		public int id { get; set; }
-		public string name { get; set; }
-		public List<string> skills { get; set; }
-		public int max_speed { get; set; }
-		public int damage { get; set; }
-		public float crit { get; set; }
-		public List<int> skill_cooldowns { get; set; }
-		public List<int> skill_costs { get; set; }
-		public List<string> skill_types { get; set; }
-		public bool is_available { get; set; }
+		public string Name { get; set; }
+		public List<string> Skills { get; set; }
+		public int MaxSpeed { get; set; }
+		public int Damage { get; set; }
+		public float Crit { get; set; }
+		public List<int> SkillCooldowns { get; set; }
+		public List<int> SkillCosts { get; set; }
+		public List<string> SkillTypes { get; set; }
+		public bool IsAvailable { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.
@@ -44,17 +43,16 @@ namespace Config
 		public override string ToString()
 		{
 			var sb = new System.Text.StringBuilder();
-			sb.AppendLine($"--- CharacterSkillsConfig Object ---");
-			sb.AppendLine($"id: {this.id}");
-			sb.AppendLine($"name: {name ?? "null"}");
-			sb.AppendLine($"skills: {(skills != null ? string.Join(", ", skills) : "null")}");
-			sb.AppendLine($"max_speed: {this.max_speed}");
-			sb.AppendLine($"damage: {this.damage}");
-			sb.AppendLine($"crit: {this.crit}");
-			sb.AppendLine($"skill_cooldowns: {(skill_cooldowns != null ? string.Join(", ", skill_cooldowns) : "null")}");
-			sb.AppendLine($"skill_costs: {(skill_costs != null ? string.Join(", ", skill_costs) : "null")}");
-			sb.AppendLine($"skill_types: {(skill_types != null ? string.Join(", ", skill_types) : "null")}");
-			sb.AppendLine($"is_available: {this.is_available}");
+			sb.AppendLine($"--- CharacterSkillsConfig Object (Id: {Id}) ---");
+			sb.AppendLine($"Name: {Name ?? "null"}");
+			sb.AppendLine($"Skills: {(Skills != null ? string.Join(\", \", Skills) : "null")}");
+			sb.AppendLine($"MaxSpeed: {this.MaxSpeed}");
+			sb.AppendLine($"Damage: {this.Damage}");
+			sb.AppendLine($"Crit: {this.Crit}");
+			sb.AppendLine($"SkillCooldowns: {(SkillCooldowns != null ? string.Join(\", \", SkillCooldowns) : "null")}");
+			sb.AppendLine($"SkillCosts: {(SkillCosts != null ? string.Join(\", \", SkillCosts) : "null")}");
+			sb.AppendLine($"SkillTypes: {(SkillTypes != null ? string.Join(\", \", SkillTypes) : "null")}");
+			sb.AppendLine($"IsAvailable: {this.IsAvailable}");
 			sb.AppendLine($"--------------------");
 			return sb.ToString();
 		}

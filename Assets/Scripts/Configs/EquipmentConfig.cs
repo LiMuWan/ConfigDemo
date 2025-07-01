@@ -26,12 +26,11 @@ namespace Config
 
 	public class EquipmentConfig : BaseEntity 
 	{
-		public int id { get; set; }
-		public string name { get; set; }
-		public string type { get; set; }
-		public string rarity { get; set; }
-		public int power { get; set; }
-		public int level_required { get; set; }
+		public string Name { get; set; }
+		public string Type { get; set; }
+		public string Rarity { get; set; }
+		public int Power { get; set; }
+		public int LevelRequired { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.
@@ -40,13 +39,12 @@ namespace Config
 		public override string ToString()
 		{
 			var sb = new System.Text.StringBuilder();
-			sb.AppendLine($"--- EquipmentConfig Object ---");
-			sb.AppendLine($"id: {this.id}");
-			sb.AppendLine($"name: {name ?? "null"}");
-			sb.AppendLine($"type: {type ?? "null"}");
-			sb.AppendLine($"rarity: {rarity ?? "null"}");
-			sb.AppendLine($"power: {this.power}");
-			sb.AppendLine($"level_required: {this.level_required}");
+			sb.AppendLine($"--- EquipmentConfig Object (Id: {Id}) ---");
+			sb.AppendLine($"Name: {Name ?? "null"}");
+			sb.AppendLine($"Type: {Type ?? "null"}");
+			sb.AppendLine($"Rarity: {Rarity ?? "null"}");
+			sb.AppendLine($"Power: {this.Power}");
+			sb.AppendLine($"LevelRequired: {this.LevelRequired}");
 			sb.AppendLine($"--------------------");
 			return sb.ToString();
 		}
