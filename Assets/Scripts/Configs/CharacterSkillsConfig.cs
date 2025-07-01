@@ -45,13 +45,13 @@ namespace Config
 			var sb = new System.Text.StringBuilder();
 			sb.AppendLine($"--- CharacterSkillsConfig Object (Id: {Id}) ---");
 			sb.AppendLine($"Name: {Name ?? "null"}");
-			sb.AppendLine($"Skills: {(Skills != null ? string.Join(\", \", Skills) : "null")}");
+			sb.AppendLine($"Skills: " + (Skills != null ? string.Join(\", \", Skills) : "null"));
 			sb.AppendLine($"MaxSpeed: {this.MaxSpeed}");
 			sb.AppendLine($"Damage: {this.Damage}");
 			sb.AppendLine($"Crit: {this.Crit}");
-			sb.AppendLine($"SkillCooldowns: {(SkillCooldowns != null ? string.Join(\", \", SkillCooldowns) : "null")}");
-			sb.AppendLine($"SkillCosts: {(SkillCosts != null ? string.Join(\", \", SkillCosts) : "null")}");
-			sb.AppendLine($"SkillTypes: {(SkillTypes != null ? string.Join(\", \", SkillTypes) : "null")}");
+			sb.AppendLine($"SkillCooldowns: " + (SkillCooldowns != null ? string.Join(\", \", SkillCooldowns) : "null"));
+			sb.AppendLine($"SkillCosts: " + (SkillCosts != null ? string.Join(\", \", SkillCosts) : "null"));
+			sb.AppendLine($"SkillTypes: " + (SkillTypes != null ? string.Join(\", \", SkillTypes) : "null"));
 			sb.AppendLine($"IsAvailable: {this.IsAvailable}");
 			sb.AppendLine($"--------------------");
 			return sb.ToString();
