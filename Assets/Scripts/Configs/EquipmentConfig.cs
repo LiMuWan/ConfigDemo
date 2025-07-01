@@ -2,53 +2,48 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using LRR.Utilities;
+using LRR.Utilities; // 假设这个命名空间包含 JsonHelper 和 JoinListOrNull
 
 namespace Config 
 {
 public class TbEquipmentConfig 
 	{
-		private readonly Dictionary<int, EquipmentConfig> _dataMap;
-		private readonly List<EquipmentConfig> _dataList;
+		/// <summary>
+		/// The dictionary mapping keys to data entries.
+		/// </summary>
+		public Dictionary<int, EquipmentConfig> DataMap { get; }
+
+		/// <summary>
+		/// A list containing all data entries.
+		/// </summary>
+		public List<EquipmentConfig> DataList { get; }
     
 		public TbEquipmentConfig(string json)
 		{
-			try
-			{
-			_dataMap = JsonHelper.ParseDictionary<EquipmentConfig>(json);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception("Failed to parse data for TbEquipmentConfig.", ex);
-			}
-            
-			if (_dataMap == null)
-			{
-				_dataMap = new Dictionary<int, EquipmentConfig>();
-				// Optional: throw an exception if data is expected
-				// throw new Exception("Parsed data resulted in a null dictionary for TbEquipmentConfig.");
-			}
-
-			_dataList = _dataMap.Values.ToList();
+			DataMap = JsonHelper.ParseDictionary<EquipmentConfig>(json) ?? new Dictionary<int, EquipmentConfig>();
+			DataList = DataMap.Values.ToList();
 		}
-
-		public Dictionary<int, EquipmentConfig> DataMap => _dataMap;
-		public List<EquipmentConfig> DataList => _dataList;
 
 		/// <summary>
 		/// Gets a data entry by key, returning null if not found.
 		/// </summary>
-		public EquipmentConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
+		/// <param name="key">The key of the data entry.</param>
+		/// <returns>The data entry, or null if not found.</returns>
+		public EquipmentConfig GetOrDefault(int key) => DataMap.TryGetValue(key, out var v) ? v : null;
 
 		/// <summary>
 		/// Gets a data entry by key. Throws KeyNotFoundException if the key does not exist.
 		/// </summary>
-		public EquipmentConfig Get(int key) => _dataMap[key];
+		/// <param name="key">The key of the data entry.</param>
+		/// <returns>The data entry.</returns>
+		public EquipmentConfig Get(int key) => DataMap[key];
 
 		/// <summary>
 		/// Provides indexer access to data entries by key.
 		/// </summary>
-		public EquipmentConfig this[int key] => _dataMap[key];
+		/// <param name="key">The key of the data entry.</param>
+		/// <returns>The data entry.</returns>
+		public EquipmentConfig this[int key] => DataMap[key];
 	}
 
 	public class EquipmentConfig : BaseEntity 
