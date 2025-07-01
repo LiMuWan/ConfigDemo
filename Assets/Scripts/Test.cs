@@ -7,8 +7,10 @@ public class Test : MonoBehaviour
     void Start()
     {
         ConfigSystem.Initialize();
-        var config = ConfigSystem.Tables.TbCharacterSkillsConfig.Get(1);
-        Debug.Log($"TbCharacterSkillsConfig data  = {config}");
+        var characterSkillsConfig = ConfigSystem.Tables.TbCharacterSkillsConfig.Get(1);
+        var characterConfig = ConfigSystem.Tables.TbCharacterConfig.Get(4);
+        Debug.Log($"TbCharacterSkillsConfig data  = {characterSkillsConfig}");
+        Debug.Log($"TbCharacterConfig data  = {characterConfig}");
     }
 
     // Update is called once per frame
