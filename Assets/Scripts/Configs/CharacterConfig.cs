@@ -26,12 +26,11 @@ namespace Config
 
 	public class CharacterConfig : BaseEntity 
 	{
-		public int id { get; set; }
-		public string name { get; set; }
-		public int speed { get; set; }
-		public int max_speed { get; set; }
-		public int damage { get; set; }
-		public float crit { get; set; }
+		public string Name { get; set; }
+		public int Speed { get; set; }
+		public int MaxSpeed { get; set; }
+		public int Damage { get; set; }
+		public float Crit { get; set; }
 
 		/// <summary>
 		/// Returns a string representation of the object for debugging purposes.
@@ -40,13 +39,12 @@ namespace Config
 		public override string ToString()
 		{
 			var sb = new System.Text.StringBuilder();
-			sb.AppendLine($"--- CharacterConfig Object ---");
-			sb.AppendLine($"id: {this.id}");
-			sb.AppendLine($"name: {name ?? "null"}");
-			sb.AppendLine($"speed: {this.speed}");
-			sb.AppendLine($"max_speed: {this.max_speed}");
-			sb.AppendLine($"damage: {this.damage}");
-			sb.AppendLine($"crit: {this.crit}");
+			sb.AppendLine($"--- CharacterConfig Object (Id: {Id}) ---");
+			sb.AppendLine($"Name: {Name ?? "null"}");
+			sb.AppendLine($"Speed: {this.Speed}");
+			sb.AppendLine($"MaxSpeed: {this.MaxSpeed}");
+			sb.AppendLine($"Damage: {this.Damage}");
+			sb.AppendLine($"Crit: {this.Crit}");
 			sb.AppendLine($"--------------------");
 			return sb.ToString();
 		}
